@@ -5,12 +5,12 @@ import { getMessaging, getToken, onMessage } from 'firebase/messaging';
 // Your web app's Firebase configuration
 // Initialize Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyC0jw2xwrWz5jW1qkfpjoIZdzePrs7aJsc",
-  authDomain: "test-messaging-acaae.firebaseapp.com",
-  projectId: "test-messaging-acaae",
-  storageBucket: "test-messaging-acaae.firebasestorage.app",
-  messagingSenderId: "207356196934",
-  appId: "1:207356196934:web:79dbb8793df26ebad9b247"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 const app = initializeApp(firebaseConfig);
 
@@ -29,14 +29,11 @@ async function requestPermission() {
     }
     
     console.log("알림 권한이 허용됨");
-    // getToken(messaging, {vapidKey: "BI4TGnUTpGvepZ2OybPh6VKcFuYqW0u3VWqpYGM9h9qiFAiEmAb_H_uub2elREf5OU_SApheVAea5w7CD34Sxl0"});
-    // const token = getToken(messaging, {vapidKey: "BI4TGnUTpGvepZ2OybPh6VKcFuYqW0u3VWqpYGM9h9qiFAiEmAb_H_uub2elREf5OU_SApheVAea5w7CD34Sxl0"});
-    // console.log("token:", token)
 
     try {
         // VAPID 키를 사용하여 FCM 토큰 가져오기
         const token = await getToken(messaging, {
-            vapidKey: "BI4TGnUTpGvepZ2OybPh6VKcFuYqW0u3VWqpYGM9h9qiFAiEmAb_H_uub2elREf5OU_SApheVAea5w7CD34Sxl0"
+            vapidKey: process.env.REACT_APP_FIREBASE_VAPID_KEY
         });
 
         if (token) console.log("FCM Token:", token);
