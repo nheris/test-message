@@ -1,5 +1,3 @@
-// import { initializeApp } from "firebase/app";
-// import { getMessaging } from 'firebase/messaging';
 import { initializeApp } from "firebase/app";
 import { getMessaging } from "firebase/messaging";
 // import { initializeApp } from "/test-message/firebase/app.js"; // 상대 경로 사용
