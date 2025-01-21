@@ -3,7 +3,6 @@ import { getMessaging } from 'firebase/messaging';
 
 //백그라운드에서 동작/ Service Worker 설정
 
-console.log("Fetch request for: ", window.location.href)
 // Firebase 초기화 (서비스 워커용)
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -51,7 +50,6 @@ self.addEventListener("push", function (e) {
       ...resultData,
   };
   console.log("push: ", { resultData, notificationTitle, notificationOptions });
-
   self.registration.showNotification(notificationTitle, notificationOptions);
 });
 
