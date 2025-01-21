@@ -1,5 +1,7 @@
-import { initializeApp } from "firebase/app";
-import { getMessaging } from "firebase/messaging";
+// import { initializeApp } from "firebase/app";
+// import { getMessaging } from "firebase/messaging";
+import firebase from "firebase/compat/app";
+import "firebase/compat/messaging";
 // import { initializeApp } from "/test-message/firebase/app.js"; // 상대 경로 사용
 // import { getMessaging } from '/test-message/firebase/messaging.js'; // 상대 경로 사용
 //백그라운드에서 동작/ Service Worker 설정
@@ -13,10 +15,13 @@ const firebaseConfig = {
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
-const app = initializeApp(firebaseConfig);
+//const app = initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
+
 
 // Firebase Cloud Messaging 초기화
-const messaging = getMessaging(app);
+//const messaging = getMessaging(app);
+const messaging = firebase.messaging(app);
 
 // // 백그라운드 알림 수신 설정
 // messaging.onBackgroundMessage(messaging, (payload) => {
