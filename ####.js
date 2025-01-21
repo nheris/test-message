@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getMessaging } from 'firebase/messaging';
 
-//백그라운드에서 동작/ Service Worker 설정
+//백그라운드에서 동작/ Service Worker 설정 /firebase-messaging-sw.js
 
 console.log("Fetch request for: ", window.location.href)
 // Firebase 초기화 (서비스 워커용)
