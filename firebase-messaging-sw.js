@@ -1,7 +1,5 @@
 import { initializeApp } from "firebase/app";
 import { getMessaging } from 'firebase/messaging';
-// import { initializeApp } from "/test-message/firebase/app.js"; // 상대 경로 사용
-// import { getMessaging } from '/test-message/firebase/messaging.js'; // 상대 경로 사용
 
 //백그라운드에서 동작/ Service Worker 설정 /firebase-messaging-sw.js
 
@@ -18,6 +16,7 @@ const app = initializeApp(firebaseConfig);
 
 // Firebase Cloud Messaging 초기화
 const messaging = getMessaging(app);
+messaging.useServiceWorker('/test-message/firebase-messaging-sw.js');
 
 // 백그라운드 알림 수신 설정
 messaging.onBackgroundMessage(messaging, (payload) => {
