@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getMessaging, getToken, onMessage } from 'firebase/messaging';
+import { getMessaging } from 'firebase/messaging';
 
 //백그라운드에서 동작/ Service Worker 설정
 
@@ -16,6 +16,17 @@ const app = initializeApp(firebaseConfig);
 
 // Firebase Cloud Messaging 초기화
 const messaging = getMessaging(app);
+
+// 서비스 워커를 명시적으로 등록
+navigator.serviceWorker
+.register("/firebase-messaging-sw.js")
+//.register(`${process.env.PUBLIC_URL}/firebase-messaging-sw.js`) // 환경변수 기반 경로
+.then((registration) => {
+  console.log("Service Worker 등록 성공:", registration);
+})
+.catch((error) => {
+  console.error("Service Worker 등록 실패:", error);
+});
 
 // 백그라운드 알림 수신 설정
 messaging.onBackgroundMessage(messaging, (payload) => {
