@@ -19,8 +19,7 @@ const messaging = getMessaging(app);
 
 // 서비스 워커를 명시적으로 등록
 navigator.serviceWorker
-.register("/firebase-messaging-sw.js")
-//.register(`${process.env.PUBLIC_URL}/firebase-messaging-sw.js`) // 환경변수 기반 경로
+.register("/test-message/firebase-messaging-sw.js")
 .then((registration) => {
   console.log("Service Worker 등록 성공:", registration);
 })
