@@ -1,6 +1,7 @@
-import { initializeApp } from "firebase/app";
-import { getMessaging } from 'firebase/messaging';
-
+// import { initializeApp } from "firebase/app";
+// import { getMessaging } from 'firebase/messaging';
+import { initializeApp } from "/test-message/firebase/app.js"; // 상대 경로 사용
+import { getMessaging } from '/test-message/firebase/messaging.js'; // 상대 경로 사용
 //백그라운드에서 동작/ Service Worker 설정
 
 // Firebase 초기화 (서비스 워커용)
